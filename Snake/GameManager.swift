@@ -30,12 +30,11 @@ class GameManager {
     }
     
     private func generateNewPoint() {
-        var randomX = CGFloat(arc4random_uniform(UInt32(scene.numColumns-1)))
-        var randomY = CGFloat(arc4random_uniform(UInt32(scene.numRows-1)))
-        while contains(a: scene.playerPositions, v: (Int(randomX), Int(randomY))) {
+        var randomX: CGFloat, randomY: CGFloat
+        repeat {
             randomX = CGFloat(arc4random_uniform(UInt32(scene.numColumns-1)))
             randomY = CGFloat(arc4random_uniform(UInt32(scene.numRows-1)))
-        }
+        } while contains(a: scene.playerPositions, v: (Int(randomX), Int(randomY)))
         scene.scorePos = CGPoint(x: randomX, y: randomY)
     }
     
